@@ -5,9 +5,9 @@ export default class GameUI {
 
         this.rootElement.innerHTML = "";
 
-        this.boardContainer = this.initBoardContainer();
-        this.infoContainer = this.initInfoContainer();
-        this.commandContainer = this.initCommandContainer();
+        this.boardContainer = this.initBoard();
+        this.infoContainer = this.initInfo();
+        this.commandContainer = this.initCommand();
 
         this.renderBoard();
         this.renderInfo();
@@ -15,21 +15,21 @@ export default class GameUI {
         rootElement.append(this.boardContainer, this.infoContainer, this.commandContainer);
     }
 
-    initBoardContainer() {
+    initBoard() {
         const boardContainer = document.createElement("div");
         boardContainer.classList.add("board-container");
         
         return boardContainer;
     }
 
-    initInfoContainer() {
+    initInfo() {
         const infoContainer = document.createElement("div");
         infoContainer.classList.add("info-container");
 
         return infoContainer;
     }
 
-    initCommandContainer() {
+    initCommand() {
         const commandContainer = document.createElement("div");
 
         commandContainer.classList.add("command-container");
@@ -85,9 +85,5 @@ export default class GameUI {
     render() {
         this.renderBoard();
         this.renderInfo();
-    }
-
-    renderCommand() {
-
     }
 }

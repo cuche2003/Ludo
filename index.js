@@ -1,9 +1,9 @@
-import Map from "./Logic/MapLogic.js"
-import Piece from "./Logic/PieceLogic.js"
+import Map from "./Logic/Map.js"
+import Piece from "./Logic/Piece.js"
 import GameState from "./Logic/GameState.js"
 import GameLogic from "./Logic/GameLogic.js"
-import Party from "./Logic/PartyLogic.js"
-import Player from "./Logic/PlayerLogic.js"
+import Party from "./Logic/Party.js"
+import Player from "./Logic/Player.js"
 import GameUI from "./UI/GameUI.js"
 
 const playerCount = 2;
