@@ -1,7 +1,8 @@
 export default class GameState {
-  constructor(map, pieces, playerCount, players) {
+  constructor(map, pieces, parties, playerCount, players) {
     this.map = map;
     this.pieces = pieces;
+    this.parties = parties;
     this.players = players;
 
     this.playerCount = playerCount;

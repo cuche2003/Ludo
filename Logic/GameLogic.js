@@ -12,36 +12,44 @@ export default class GameLogic {
   getPlayerFromId(playerId) {
     return this.gameState.players.find(player => player.id == playerId);
   }
+  
+  moveButtonClick() {
+    const player = this.getPlayerFromId(this.gameState.currentPlayer);
 
-  rollButtonClick(die) {
-    const rollResult = rollDie(die);
-    
-    const activePlayer = this.getPlayerFromId(this.gameState.currentPlayer);
-    console.log(activePlayer);
-    const pieceId = activePlayer.party.pieces[0].id;
+    if (player.hasRolled) return;
 
-    this.movePiece(pieceId, rollResult);
+    this.gameState.rollResult = rollDie([1,2,3,4,5,6]);
+    player.hasRolled = true;
+    player.party.pieces.forEach(piece => piece.isSelectable = true);
+  }
 
+  selectPieceClick(piece) {
+    if (piece.playerId != this.gameState.currentPlayer) return;
+
+    const player = this.getPlayerFromId(this.gameState.currentPlayer);
+    if (!player.hasRolled) return;
+
+    this.movePiece(piece, this.gameState.rollResult);
+    player.hasMoved = true;
+    player.party.pieces.forEach(piece => piece.isSelectable = false);
     this.endTurn();
   }
 
-  movePiece(pieceId, steps){
+  movePiece(piece, steps){
     const { map } = this.gameState; 
-    const piece = this.getPieceFromId(pieceId);
 
-    map.cells[piece.pos].occuPieces = map.cells[piece.pos].occuPieces.filter(id => id != pieceId);
+    map.cells[piece.pos].occuPieces = map.cells[piece.pos].occuPieces.filter(id => id != piece.id);
     for(let i = 0; i < steps; i++){
       piece.pos = map.cells[piece.pos].next[0];
     }
     
-    map.cells[piece.pos].occuPieces.push(pieceId);
+    map.cells[piece.pos].occuPieces.push(piece.id);
   }
 
-  addPiece(pieceId, des){
+  addPiece(piece, des){
     const { map } = this.gameState;
-    const piece = this.getPieceFromId(pieceId);
 
-    map.cells[des].occuPieces.push(pieceId);
+    map.cells[des].occuPieces.push(piece.id);
     piece.pos = des;
   }
 
@@ -49,8 +57,13 @@ export default class GameLogic {
     const { gameState } = this;
     const currIndex = gameState.turnOrder.indexOf(gameState.currentPlayer);
 
+    const currentPlayer = this.getPlayerFromId(gameState.currentPlayer);
+    currentPlayer.hasRolled = false;
+    currentPlayer.hasMoved = false;
+    currentPlayer.rollResult = 0;
+
     gameState.turn += 1;
     gameState.currentPlayer = gameState.turnOrder[(currIndex+1) % gameState.playerCount] ;
-  }
 
+  }
 }

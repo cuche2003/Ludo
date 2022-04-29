@@ -8,7 +8,26 @@
   text-align: center;
 }
 
-.cell {
+.flag-cell {
+  background: rgb(199, 1, 189);
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.star-cell {
+  background: rgb(201, 204, 0);
+  border: 1px solid #000;
+}
+
+.terrain-cell {
   background: #AAA;
   border: 1px solid #000;
+}
+
+.piece {
+  width: 40px;
+  height: 40px;
+}
+
+.selectable {
+  background-color: rgb(0, 219, 0);
 }

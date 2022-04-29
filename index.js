@@ -11,8 +11,8 @@ const playerCount = 2;
 const myMap = new Map(0);
 console.log(myMap);
 
-const myPiece = new Piece(0, 0);
-const newPiece = new Piece(1, 1);
+const myPiece = new Piece(0);
+const newPiece = new Piece(1);
 // console.log(myPiece);
 
 const myParty = new Party(0, [myPiece]);
@@ -23,12 +23,12 @@ const newPlayer = new Player(1, "Rem", newParty);
 
 const myPieces = [myPiece, newPiece];
 
-const myGameState = new GameState(myMap, myPieces, playerCount, [myPlayer, newPlayer]);
+const myGameState = new GameState(myMap, myPieces, [myParty, newParty], playerCount, [myPlayer, newPlayer]);
 // console.log(myGameState);
 
 const myGameLogic = new GameLogic(myGameState);
-myGameLogic.addPiece(myPiece.id, 0);
-myGameLogic.addPiece(newPiece.id, 6);
+myGameLogic.addPiece(myPiece, 0);
+myGameLogic.addPiece(newPiece, 6);
 console.log(myGameLogic);
 
 console.log(myGameState);

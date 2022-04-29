@@ -1,7 +1,11 @@
 export default class Piece {
-  constructor(id, party) {
+  constructor(id) {
     this.id = id;
-    this.party = party;
     this.pos = null;
+    this.partyId = null;
+    this.playerId = null;
+
+    this.isSummoned = false;
+    this.isSelectable = false;
   }
 }

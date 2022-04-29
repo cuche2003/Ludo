@@ -1,6 +1,7 @@
 export default class Party {
-    constructor(id, pieces) {
+    constructor (id, pieces) {
         this.id = id;
         this.pieces = pieces;
-    }
+        this.playerId = null;
+    }    
 }

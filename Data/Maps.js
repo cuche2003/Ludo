@@ -10,21 +10,27 @@ export const Maps = [
         next: [1],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "flag"
+        }
       },
       {
         id: 1,
         next: [2],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "star",
+        }
       },
       {
         id: 2,
         next: [5],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "flag",
+        }
       },
       {
         id: 3,
@@ -32,8 +38,7 @@ export const Maps = [
         occuPieces: [],
         isPath: true,
         type: {
-          name: "checkpoint",
-          next: [4],
+          name: "star",
         },
       },
       {
@@ -42,8 +47,7 @@ export const Maps = [
         occuPieces: [],
         isPath: false,
         type: {
-          name: "finish",
-          next: [],
+          name: "terrain",
         },
       },
       {
@@ -51,28 +55,36 @@ export const Maps = [
         next: [8],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "star",
+        },
       },
       {
         id: 6,
         next: [3],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "flag",
+        },
       },
       {
         id: 7,
         next: [6],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "star",
+        },
       },
       {
         id: 8,
         next: [7],
         occuPieces: [],
         isPath: true,
-        type: "path",
+        type: {
+          name: "flag",
+        },
       },
     ]
   }
